@@ -1,86 +1,57 @@
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"; // Import routing components
+import Banner from "./components/Banner";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contect from "./pages/Contect";
+import Login from "./pages/Login";  
+import SignupPage from "./pages/Resgister";
 
-import React, { useState } from "react";
+import "./index.css";
+import LoginMinimal from "./pages/Login";
+import Slider from "./components/Slider";
+import Product from "./pages/Product";
 
-const Page = () => {
-  const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
-  const [mainTask, setMainTask] = useState([]);
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    setMainTask([...mainTask, { title, desc }]);
-    setTitle("");
-    setDesc("");
-  };
-
-  const deleteHandler = (i) => {
-    let copyTask = [...mainTask];
-    copyTask.splice(i, 1);
-    setMainTask(copyTask);
-  };
-
-  let renderTask = <h2 className="text-black text-center">No Task Available</h2>;
-  if (mainTask.length > 0) {
-    renderTask = mainTask.map((t, i) => (
-      <li
-        key={i}
-        className="flex items-center justify-between mb-5 p-4 bg-white rounded-lg shadow-md transition-transform transform hover:scale-105"
-      >
-        <div className="flex flex-col text-black w-3/4">
-          <h5 className="text-2xl font-semibold">{t.title}</h5>
-          <h6 className="text-lg font-medium">{t.desc}</h6>
-        </div>
-        <button
-          onClick={() => deleteHandler(i)}
-          className="bg-red-600 text-white px-4 py-2 rounded-lg font-bold transition-colors duration-300 hover:bg-red-700"
-        >
-          Delete
-        </button>
-      </li>
-    ));
-  }
+function App() {
+  const isLoggedIn = true ;
 
   return (
     <>
-      <h1 className="bg-black text-white p-5 text-3xl font-bold text-center rounded shadow-md">
-        To-Do List
-      </h1>
+      <Banner />
+      <Navbar />
+      
 
-      <form
-        onSubmit={submitHandler}
-        className="p-5 bg-gray-100 rounded-lg shadow-md m-5"
-      >
-        <input
-          type="text"
-          placeholder="Enter Title Here"
-          className="text-2xl border-gray-300 border-2 rounded-lg p-3 mb-4 w-full transition-colors duration-300 focus:border-blue-500 focus:outline-none"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
 
-        <input
-          type="text"
-          placeholder="Enter Description Here"
-          className="text-2xl border-gray-300 border-2 rounded-lg p-3 mb-4 w-full transition-colors duration-300 focus:border-blue-500 focus:outline-none"
-          value={desc}
-          onChange={(e) => setDesc(e.target.value)}
-        />
+      <Routes>
+    
+         < Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        <Route path="/not-found" element={<div>not foundddd</div>} />
+        <Route path="/product" element={<Product />} />
+        {isLoggedIn ? (
+          <>
+            <Route
+              path="/profile"
+              element={<div>this is my profile page</div>}
+            />
+           
+            <Route path="/contect" element={<Contect />} /> 
+            <Route path="/login" element={<Navigate to="/" />} />
+            <Route path="*" element={<Navigate to="/not-found" />} />
+          </>
+        ) : (
+          <>
+            <Route path="/login" element={<Login />} />
+            <Route path="*" element={<Navigate to="/login" />} />
+          </>
+        )}
 
-        <button
-          type="submit"
-          className="bg-black text-white px-4 py-3 text-2xl font-bold rounded-lg transition-transform transform hover:scale-105"
-        >
-          Add Task
-        </button>
-      </form>
-
-      <hr className="my-6 border-gray-300" />
-
-      <div className="p-8 bg-gray-200 rounded-lg shadow-md">
-        <ul>{renderTask}</ul>
-      </div>
+        <Route path="/login" element={<LoginMinimal />} />
+        <Route path="/resgister" element={<SignupPage/>} />
+      </Routes>
     </>
   );
-};
+}
 
-export default Page;
+export default App;
