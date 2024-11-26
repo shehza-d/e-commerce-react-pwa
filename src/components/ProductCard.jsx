@@ -1,6 +1,6 @@
 export default function ProductCard(props) {
   // Format price to two decimal places
-  // const formattedPrice = props.price.toFixed(2);
+  const formattedPrice = props.price.toFixed(2);
   const formattedDiscountPrice = (props.price * (1 - props.discountPercentage / 100)).toFixed(2);
   
   return (
@@ -22,12 +22,12 @@ export default function ProductCard(props) {
       </h3>
 
       <p className="text-sm">
-        {/* <span>${formattedPrice}</span> */}
+        <span>${formattedPrice}</span>
         <span className="line-through text-gray-500"> ${formattedDiscountPrice}</span>
       </p>
 
       <div className="flex items-center">
-        {/* <span className="text-yellow-500">{props.rating.toFixed(2)} ★★★★★ </span> */}
+        <span className="text-yellow-500">{props.rating.toFixed(2)} ★★★★★ </span>
       </div>
     </div>
   );

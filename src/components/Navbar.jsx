@@ -39,16 +39,16 @@ export default function Navbar() {
       </button>
 
       {isHamburgerOpen && (
-        <ul className='absolute bg-gray-200 w-full z-10 gap-3 center justify-around  pl-6 top-28  h-14'>
+        <ul className='absolute bg-gray-200 w-full z-10 center justify-around  pl-1 top-20  h-14'>
           {links.map((item, i) => (
             <li key={i}>
-              <a className='hover:bg-primary px-12 py-0 transition-all duration-300 ease-in-out rounded-r-full' href={item.link}>{item.title}</a>
+              <a className='hover:bg-primary px-2 py- transition-all duration-300 ease-in-out rounded-r-full' href={item.link}>{item.title}</a>
             </li>
           ))}
           {!isLoggedIn && <li className={navLinkStyle}>
             
               
-        <Link to  ="/login" className='rounded-b-md border-2 border-red-600 px-6 py-0 font-medium text-red-600 hover:bg-red-600 hover:text-white
+        <Link to  ="/login" className='rounded-b-md border-2 border-red-600 px-1 py-1 font-medium text-red-600 hover:bg-red-600 hover:text-white
         m-0 transition-all duration-300 ease-in-out ' >Login</Link>
         
             </li>}
@@ -81,13 +81,14 @@ export default function Navbar() {
         
         <Link to={"/profile"} className='bg-primary rounded-full h-10 w-10 flex justify-center items-center text-base overflow-hidden'>
           {isLoggedIn ? (
+              <FaRegUser />
+          ) : (
+          
             <img
-              src="https://img.freepik.com/premium-vector/user-login-icon-vector-image-can-be-used-security_120816-252521.jpg?w=740"
+              src="https://scontent.fkhi22-1.fna.fbcdn.net/v/t39.30808-6/465009504_3936006186645848_3308954008077880070_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEH-HAyelHYaTdDYC5ApPusCgm9DDWIYJgKCb0MNYhgmIz_nleMFFQjvA36dXkCH2tIDhJPCJdjAufKTXeYf9qL&_nc_ohc=g3UFOu4070cQ7kNvgHcDeTt&_nc_zt=23&_nc_ht=scontent.fkhi22-1.fna&_nc_gid=A10i7uUpi_BYKP6DU5HjOdW&oh=00_AYAymFC5lE6o421QxEC5BlZjHZyAQiUFCE39uBeNJErLBw&oe=674ADC8C"
               alt="User"
               className="h-full w-full object-cover"
             />
-          ) : (
-            <FaRegUser />
           )}
         </Link>
       </div>

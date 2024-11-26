@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Footer from "../components/Footer";
 
 export default function AboutUsPage() {
   return (
@@ -58,7 +59,10 @@ function ModernDesign() {
         <button className="px-6 py-3 bg-red-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-all">
           Get Started
         </button>
+       
       </div>
+       <Footer />
     </div>
+    
   );
 }

@@ -12,6 +12,8 @@ import "./index.css";
 import LoginMinimal from "./pages/Login";
 import Slider from "./components/Slider";
 import Product from "./pages/Product";
+import Profile from "./pages/Profile";
+import Footer from "./components/Footer";
 
 function App() {
   const isLoggedIn = true ;
@@ -33,7 +35,7 @@ function App() {
           <>
             <Route
               path="/profile"
-              element={<div>this is my profile page</div>}
+              element={ <Profile /> }
             />
            
             <Route path="/contect" element={<Contect />} /> 
@@ -50,6 +52,7 @@ function App() {
         <Route path="/login" element={<LoginMinimal />} />
         <Route path="/resgister" element={<SignupPage/>} />
       </Routes>
+      <Footer />
     </>
   );
 }

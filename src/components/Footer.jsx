@@ -56,12 +56,12 @@ export default function Footer() {
           Save $3 with App New User Only{" "}
         </p>
         <div className="flex gap-3 items-center">
-          <div>
-            <img src={QrCodeImg} alt=""height={100} width={100} /  >
+          <div className="">
+            <img className=" rounded-3" src={QrCodeImg} alt=""height={100} width={100} /  >
           </div>
           <div className="flex flex-row ">
-            <img src={GooglePlayImg} alt="" height={100} width={100}/>
-            <img src={AppStoreImg} alt="" height={100} width={100}/>
+            <img src={GooglePlayImg} alt=""  width={70}/>
+            <img src={AppStoreImg} alt=""  width={70}/>
           </div>
         </div>
         <div className="flex gap-6 text-xl pt-2">
